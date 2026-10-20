@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infrastructure - St. Ann's English Medium High School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a5276;
+            --primary-light: #2980b9;
+            --secondary: #e67e22;
+            --secondary-light: #f39c12;
+            --accent: #16a085;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            overflow-x: hidden;
+            background-color: #f4f6f8;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+            background-color: white;
+            margin: 40px auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 1000px;
+        }
+
+        .section-content {
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .section-content {
+                flex-direction: column;
+            }
+        }
+
+        .section-text {
+            flex: 1;
+        }
+
+        .section-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 4/3;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        /* Alternate reverse layout */
+        .section:nth-child(even) .section-content {
+            flex-direction: row-reverse;
+        }
+        @media (max-width: 768px) {
+            .section:nth-child(even) .section-content {
+                flex-direction: column;
+            }
+        }
+
+        /* Header placeholder style */
+        .page-header {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Enhanced Mobile Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-header {
+                padding: 25px 0;
+            }
+
+            .section {
+                padding: 40px 0;
+                margin: 20px 10px;
+                border-radius: 8px;
+            }
+
+            .section-content {
+                padding: 0 20px;
+                gap: 25px;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-image {
+                width: 100%;
+            }
+
+            .section-image img {
+                aspect-ratio: 16/9;
+            }
+
+            .section-text p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 1.4rem;
+            }
+
+            .section {
+                padding: 30px 0;
+                margin: 15px 5px;
+            }
+
+            .section-content {
+                padding: 0 15px;
+                gap: 20px;
+            }
+
+            .section-title h2 {
+                font-size: 1.4rem;
+            }
+
+            .section-text p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Our Infrastructure</h1>
+            <p>State-of-the-art facilities for holistic learning</p>
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <section id="physical" class="section">
+            <div class="section-title">
+                <h2>Physical Infrastructure</h2>
+            </div>
+            <div class="section-content">
+                <div class="section-text">
+                    <p>Our campus layout is designed to provide a serene and conducive environment for learning. The school building overview showcases well-ventilated classrooms and robust safety features to ensure the well-being of all our students.</p>
+                </div>
+                <div class="section-image">
+                    <img src="./Photo/SchoolSide.jpg" alt="Campus Building">
+                </div>
+            </div>
+        </section>
+
+        <section id="library" class="section">
+            <div class="section-title">
+                <h2>Library</h2>
+            </div>
+            <div class="section-content">
+                <div class="section-text">
+                    <p>With an extensive collection size covering fiction, non-fiction, and academic reference sections, our reading room setup encourages students to explore. Guided by clear lending guidelines, it's a hub of knowledge.</p>
+                </div>
+                <div class="section-image">
+                    <img src="./Photo/s9.jpg" alt="Library">
+                </div>
+            </div>
+        </section>
+
+        <section id="laboratory" class="section">
+            <div class="section-title">
+                <h2>Laboratory</h2>
+            </div>
+            <div class="section-content">
+                <div class="section-text">
+                    <p>Dedicated Science laboratories for Physics, Chemistry, and Biology offer hands-on learning experiences. All labs are equipped with the latest lab safety equipment to ensure secure experimentation.</p>
+                </div>
+                <div class="section-image">
+                    <img src="./Photo/s8.jpg" alt="Science Lab">
+                </div>
+            </div>
+        </section>
+
+        <section id="computer-lab" class="section">
+            <div class="section-title">
+                <h2>Computer Lab</h2>
+            </div>
+            <div class="section-content">
+                <div class="section-text">
+                    <p>Our computer labs feature modern system configurations, high-speed internet, and advanced educational software, empowering students with essential digital skills for the future.</p>
+                </div>
+                <div class="section-image">
+                    <img src="./Photo/a1.jpg" alt="Computer Lab">
+                </div>
+            </div>
+        </section>
+
+        <section id="smart-class" class="section">
+            <div class="section-title">
+                <h2>Smart Classroom</h2>
+            </div>
+            <div class="section-content">
+                <div class="section-text">
+                    <p>Equipped with interactive panels, digital learning tools, and modern audiovisual projection systems, our smart classrooms transform traditional teaching into an engaging, multimedia experience.</p>
+                </div>
+                <div class="section-image">
+                    <img src="./Photo/s7.jpg" alt="Smart Classroom">
+                </div>
+            </div>
+        </section>
+
+        <section id="remedial" class="section">
+            <div class="section-title">
+                <h2>Remedial Tech Teachings</h2>
+            </div>
+            <div class="section-content">
+                <div class="section-text">
+                    <p>We provide special assistance through remedial coaching, utilizing technology-driven doubt clearance sessions to ensure no student is left behind in their academic journey.</p>
+                </div>
+                <div class="section-image">
+                    <img src="./Photo/s5.jpg" alt="Remedial Tech Teachings">
+                </div>
+            </div>
+        </section>
+
+        <section id="sports" class="section">
+            <div class="section-title">
+                <h2>Sports & Games</h2>
+            </div>
+            <div class="section-content">
+                <div class="section-text">
+                    <p>Fostering physical fitness and teamwork, we offer excellent indoor and outdoor sporting facilities, quality equipment, and expert coaching programs across various disciplines.</p>
+                </div>
+                <div class="section-image">
+                    <img src="./Photo/s1.jpg" alt="Sports and Games">
+                </div>
+            </div>
+        </section>
+
+        <section id="playground" class="section">
+            <div class="section-title">
+                <h2>Playground</h2>
+            </div>
+            <div class="section-content">
+                <div class="section-text">
+                    <p>Our expansive play area specifications include a dedicated running track and specialized sports courts, giving students ample space to play, practice, and excel.</p>
+                </div>
+                <div class="section-image">
+                    <img src="./Photo/s2.jpg" alt="Playground">
+                </div>
+            </div>
+        </section>
+
+        <section id="clubs" class="section">
+            <div class="section-title">
+                <h2>Clubs & Association</h2>
+            </div>
+            <div class="section-content">
+                <div class="section-text">
+                    <p>Student clubs like the Eco Club, Science Club, Literary & Debate society, and Arts & Culture group provide platforms for holistic development, leadership, and creative expression.</p>
+                </div>
+                <div class="section-image">
+                    <img src="./Photo/s4.jpg" alt="Clubs">
+                </div>
+            </div>
+        </section>
+
+        <section id="conveyance" class="section">
+            <div class="section-title">
+                <h2>School Conveyance & Undertaking</h2>
+            </div>
+            <div class="section-content">
+                <div class="section-text">
+                    <p>Ensuring transit safety, our bus fleet details include GPS tracking info. We maintain a transparent process with clear parent transportation undertaking terms for peace of mind.</p>
+                </div>
+                <div class="section-image">
+                    <img src="./Photo/s6.jpg" alt="School Bus">
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>

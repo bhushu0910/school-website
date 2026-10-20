@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St. Ann's English Medium High School & Nandura - Mandatory Public Disclosure</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a4f72;
+            --secondary: #2a7aad;
+            --accent: #f39c12;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --border: #dee2e6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(120deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .school-name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .page-title {
+            font-size: 1.8rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 18px 25px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-header i {
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .section-content {
+            padding: 25px;
+        }
+        
+        .info-table {
+            width: 100%;
+		
+            border-collapse: collapse;
+        }
+		.table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+        
+        .info-table th {
+            background-color: #e9f2fa;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border);
+			    word-wrap: break-word;
+                word-break: break-word;
+                white-space: normal;
+        }
+        
+        .info-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+			    word-wrap: break-word;
+                word-break: break-word;
+                white-space: normal;
+        }
+        
+        .info-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .info-table tr:hover td {
+            background-color: #f8fbff;
+        }
+        
+        .highlight {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(42, 122, 173, 0.3);
+        }
+        
+        .btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(42, 122, 173, 0.4);
+        }
+        
+        .btn i {
+            margin-right: 5px;
+        }
+        
+        .result-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .result-card {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .result-header {
+            background: linear-gradient(to right, #2c3e50, #4a6582);
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .result-table th {
+            background-color: #f1f6fc;
+            padding: 12px 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .result-table td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .result-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .perfect-score {
+            color: var(--success);
+            font-weight: 700;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            background: #f1f8ff;
+            padding: 12px 18px;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .contact-item i {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-right: 12px;
+        }
+        
+        .infra-detail {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--border);
+        }
+        
+        .infra-detail:last-child {
+            border-bottom: none;
+        }
+        
+        .infra-icon {
+            width: 40px;
+            height: 40px;
+            background: #e6f2ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+        
+        @media (max-width: 768px) {
+            .school-name {
+                font-size: 1.8rem;
+            }
+            
+            .page-title {
+                font-size: 1.4rem;
+            }
+            
+            .section-header {
+                font-size: 1.2rem;
+                padding: 15px 20px;
+            }
+            
+            .section-content {
+                padding: 20px;
+            }
+            
+            .info-table th, 
+            .info-table td {
+                padding: 12px 10px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="school-name">St. Ann's English Medium High School & Nandura</h1>
+            <h2 class="page-title">Mandatory Public Disclosure</h2>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Section A: General Information -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-info-circle"></i>
+                A. GENERAL INFORMATION
+            </div>
+            <div class="section-content">
+                <table class="info-table">
+                    <tr>
+                        <th width="30%">Items</th>
+                        <th width="70%">Details</th>
+                    </tr>
+                    <tr>
+                        <td>NAME OF THE SCHOOL</td>
+                        <td>St. Ann's English Medium High School & Nandura</td>
+                    </tr>
+                    <tr>
+                        <td>AFFILIATION NO</td>
+                        <td>Nil</td>
+                    </tr>
+                    <tr>
+                        <td>SCHOOL CODE</td>
+                        <td>Nil</td>
+                    </tr>
+                    <tr>
+                        <td>COMPLETE ADDRESS WITH PIN CODE</td>
+                        <td>MALKAPUR ROAD, NANDURA TQ. NANDURA DIST. BULDHANA PIN - 443404</td>
+                    </tr>
+                    <tr>
+                        <td>PRINCIPAL NAME & QUALIFICATION</td>
+                        <td>Sr. Amala Mary, B.Sc (B.B.C)</td>
+                    </tr>
+                    <tr>
+                        <td>SCHOOL EMAIL ID</td>
+                        <td>stannsschool212017nandura@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td>CONTACT DETAILS</td>
+                        <td class="highlight">+91 91306 65943</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Section B: Documents and Information -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-file-alt"></i>
+                B. DOCUMENTS AND INFORMATION
+            </div>
+            <div class="section-content">
+                <table class="info-table">
+                    <tr>
+                        <th width="10%">Sr No</th>
+                        <th width="50%">Items</th>
+                        <th width="40%">Uploaded Documents</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>COPIES OF AFFILIATION/UPGRADATION/ LETTER AND RECENT EXTENSION OF AFFILIATION IF ANY</td>
+                        <td><a href="#" class="btn"><i class="fas fa-none"></i> Nil</a></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>COPIES OF SOCIETIES /TRUST/COMPANY REGISTRATION/RENEWAL CERTIFICATE AS APPLICABLE</td>
+                        <td><a href="./Certificate/SCOCIETY.pdf" class="btn"><i class="fas fa-download"></i> Click Here</a></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>COPIES OF NO OBJECTION CERTIFICATE (NOC) ISSUED IF ANY APPLICABLE BY THE STATE GOV/UT</td>
+                        <td><a href="" class="btn"><i class="fas fa-download"></i> Click Here</a></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>COPIES OF RECOGNITION CERTIFICATE UNDER RTE ACT, 2009 AND ITS RENEWAL IF APPLICABLE</td>
+                        <td><a href="./Certificate/RTE.pdf" class="btn"><i class="fas fa-download"></i> Click Here</a></td>
+                    </tr>
+					 <tr>
+                        <td>5</td>
+                        <td>COPY OF LAND CERTIFICATE</td>
+                        <td><a href="./Certificate/LAND CERTIFICATE _20250705_0001.pdf" class="btn"><i class="fas fa-download"></i> Click Here</a></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>COPY OF VALID BUILDING SAFETY CERTIFICATE AS PER THE NATIONAL BUILDING CODE</td>
+                        <td><a href="./Certificate/BUILDING SAFETY CERTIFICATE from PWD_20250705_0001.pdf" class="btn"><i class="fas fa-download"></i> Click Here</a></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>COPY OF VALID FIRE SAFETY CERTIFICATE ISSUED BY THE COMPETENT AUTHORITY</td>
+                        <td><a href="./Certificate/FIRE SAFETY CERTIFICATE_20250705_0001.pdf" class="btn"><i class="fas fa-download"></i> Click Here</a></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>COPY OF THE DEO CERTIFICATE SUBMITTED BY THE SCHOOL FOR AFFILIATION UPGRADATION/EXTENSION OF AFFILIATION OR SELF CERTIFICATE BY SCHOOL</td>
+                        <td><a href="./Certificate/SCHOOL PERMISSION OF GOV.pdf" class="btn"><i class="fas fa-download"></i> Click Here</a></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>COPIES OF VALID WATER, HEALTH AND SANITATION CERTIFICATE</td>
+                        <td><a href="./Certificate/safeWaterDrinking.pdf" class="btn"><i class="fas fa-download"></i> Click Here</a></td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Section C: Result and Academic -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-graduation-cap"></i>
+                C. RESULT AND ACADEMIC
+            </div>
+            <div class="section-content">
+                <table class="info-table">
+                    <tr>
+                        <th width="10%">Sr No</th>
+                        <th width="60%">Items</th>
+                        <th width="30%">Uploaded Documents</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>FEE STRUCTURE OF THE SCHOOL</td>
+                        <td><a href="./Certificate/SCHOOL FEE STRUCTURE.pdf" class="btn"><i class="fas fa-download"></i> Click Here</a></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>ANNUAL ACADEMIC CALANDER</td>
+                        <td><a href="./Certificate/AnnualCalender.pdf" class="btn"><i class="fas fa-download"></i> Click Here</a></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>LIST OF THE SCHOOL MANAGEMENT COMMITTEE (SMC)</td>
+                        <td><a href="./Certificate/SCHOOL MANAGEMENT COMMITTEE SMC_20250705_0001.pdf" class="btn"><i class="fas fa-download"></i> Click Here</a></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>LIST OF PARENTS TEACHERS ASSOCIATION (PTA) MEMBERS</td>
+                        <td><a href="./Certificate/PTA.pdf" class="btn"><i class="fas fa-download"></i> Click Here</a></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>LAST THREE YEAR RESULT OF THE BOARD EXAMINATION AS PER APPLICABILITY</td>
+                        <td><a href="#" class="btn"> Nil</a></td>
+                    </tr>
+                </table>
+                
+                <div class="result-container">
+                    <!-- Class X Results -->
+                    <div class="result-card">
+                        <div class="result-header">Result Class X</div>
+                        <table class="result-table">
+                            <tr>
+                                <th>Year</th>
+                                <th>Registered Students</th>
+                                <th>Students Passed</th>
+                                <th>Pass Percentage</th>
+                            </tr>
+                            <tr>
+                                <td>2022-23</td>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                                <td class="perfect-score">N/A</td>
+                            </tr>
+                            <tr>
+                                <td>2023-24</td>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                                <td class="perfect-score">N/A</td>
+                            </tr>
+                            <tr>
+                                <td>2024-25</td>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                                <td class="perfect-score">N/A</td>
+
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <!-- Class XII Results -->
+                    <div class="result-card">
+                        <div class="result-header">Result Class XII</div>
+                        <table class="result-table">
+                            <tr>
+                                <th>Year</th>
+                                <th>Registered Students</th>
+                                <th>Students Passed</th>
+                                <th>Pass Percentage</th>
+                            </tr>
+                            <tr>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                            </tr>
+                            <tr>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                            </tr>
+                            <tr>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section D: Staff (Teaching) -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-chalkboard-teacher"></i>
+                D. STAFF (TEACHING)
+            </div>
+            <div class="section-content">
+                <table class="info-table">
+                    <tr>
+                        <th width="30%">Information</th>
+                        <th width="70%">Details</th>
+                    </tr>
+                    <tr>
+                        <td>PRINCIPAL</td>
+                        <td>ST. ANN’S ENGLISH MEDIUM HIGH SCHOOL AND JUNIOR COLLEGE, NANDURA</td>
+                    </tr>
+                    <tr>
+                        <td>TOTAL NO. OF TEACHERS</td>
+                        <td>109</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            PGT: 0<br>
+                            TGT: 38<br>
+                            PRT: 40<br>
+                            NTT: 23
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>TEACHERS SECTION RATIO</td>
+                        <td>
+                            TGT: 1:1.5<br>
+                            PRT: 1:1.5
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>DETAILS OF SPECIAL EDUCATOR</td>
+                        <td>Mr. Vijay Pandhari Parakhe</td>
+                    </tr>
+                    <tr>
+                        <td>DETAILS OF COUNSELLOR AND WELNESS TEACHERS</td>
+                        <td>Prathyusha Pothi Reddy</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Section E: School Infrastructure -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-school"></i>
+                E. SCHOOL INFRASTRUCTURE
+            </div>
+            <div class="section-content">
+                <div class="infra-detail">
+                    <div class="infra-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <strong>TOTAL CAMPUS AREA OF THE SCHOOL (IN SQUARE MTR)</strong>
+                        <p>12100 Sq.M.</p>
+                    </div>
+                </div>
+                
+                <div class="infra-detail">
+                    <div class="infra-icon">
+                        <i class="fas fa-door-open"></i>
+                    </div>
+                    <div>
+                        <strong>NO AND SIZE OF THE CLASS ROOMS (IN SQ MTR)</strong>
+                        <p>Number of Room - 13, Size of Each Room is 53.14 Sq.M</p>
+                    </div>
+                </div>
+                
+                <div class="infra-detail">
+                    <div class="infra-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div>
+                        <strong>NO AND SIZE OF LABORATORIES INCLUDING COMPUTER LABS (IN SQ MTR)</strong>
+                        <p>
+                            Number of Laboratories: 04<br>
+                            Composite Science Lab (Biology, Chemistry, Physics): 93.295 Sq.M.<br>
+                            Maths & Social Science Lab: 52.917 Sq.M.<br>
+                            Computer Lab: 72.230 Sq.M.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="infra-detail">
+                    <div class="infra-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div>
+                        <strong>INTERNET FACILITY (Y/S)</strong>
+                        <p>YES</p>
+                    </div>
+                </div>
+                
+                <div class="infra-detail">
+                    <div class="infra-icon">
+                        <i class="fas fa-restroom"></i>
+                    </div>
+                    <div>
+                        <strong>NO. OF GIRLS TOILETS</strong>
+                        <p>Toilets 14 and Urinals 18</p>
+                    </div>
+                </div>
+                
+                <div class="infra-detail">
+                    <div class="infra-icon">
+                        <i class="fas fa-restroom"></i>
+                    </div>
+                    <div>
+                        <strong>NO. OF BOYS TOILETS</strong>
+                        <p>Toilets 12 and Urinals 19</p>
+                    </div>
+                </div>
+                
+                <div class="infra-detail">
+                    <div class="infra-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div>
+                        <strong>LINK OF YOUTUBE VIDEO OF THE INSPECTION OF SCHOOL COVERING THE INFRASTRUCTURE OF THE SCHOOL</strong>
+                        <p><a href="http://www.youtube.com/@stannsenglishmediumschooln1226" class="btn"><i class="fab fa-youtube"></i> Click Here</a></p>
+                    </div>
+                </div>
+                
+                <div class="infra-detail">
+                    <div class="infra-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div>
+                        <strong>APPENDIX - IX</strong>
+                        <p><a href="#" class="btn"> Nil</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 St. Ann's English Medium High School & Nandura | All Rights Reserved</p>
+            <p>Designed with <i class="fas fa-heart" style="color: #e74c3c;"></i> for Educational Transparency</p>
+        </div>
+    </footer>
+</body>
+</html>
